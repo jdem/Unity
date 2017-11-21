@@ -82,7 +82,7 @@ namespace IntegrationTests
                 repositoryWatcher.Start();
                 while (repositoryWatcher.CheckAndProcessEvents() != 0)
                 {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(200));
+                    Thread.Sleep(TimeSpan.FromSeconds(2));
                 }
                 repositoryWatcher.Stop();
             }
