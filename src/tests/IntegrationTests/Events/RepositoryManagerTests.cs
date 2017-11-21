@@ -25,6 +25,8 @@ namespace IntegrationTests
         [Test]
         public async Task ShouldPerformBasicInitialize()
         {
+            Logger.Trace("Starting ShouldPerformBasicInitialize");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -43,11 +45,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.Received().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldPerformBasicInitialize");
         }
 
         [Test]
         public async Task ShouldDetectFileChanges()
         {
+            Logger.Trace("Starting ShouldDetectFileChanges");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -78,11 +84,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.DidNotReceive().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectFileChanges");
         }
 
         [Test]
         public async Task ShouldAddAndCommitFiles()
         {
+            Logger.Trace("Starting ShouldAddAndCommitFiles");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -139,11 +149,15 @@ namespace IntegrationTests
             repositoryManagerListener.Received().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldAddAndCommitFiles");
         }
 
         [Test]
         public async Task ShouldAddAndCommitAllFiles()
         {
+            Logger.Trace("Starting ShouldAddAndCommitAllFiles");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -199,11 +213,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldAddAndCommitAllFiles");
         }
 
         [Test]
         public async Task ShouldDetectBranchChange()
         {
+            Logger.Trace("Starting ShouldDetectBranchChange");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -232,11 +250,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.DidNotReceive().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectBranchChange");
         }
 
         [Test]
         public async Task ShouldDetectBranchDelete()
         {
+            Logger.Trace("Starting ShouldDetectBranchDelete");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -267,11 +289,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.Received().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectBranchDelete");
         }
 
         [Test]
         public async Task ShouldDetectBranchCreate()
         {
+            Logger.Trace("Starting ShouldDetectBranchCreate");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -320,11 +346,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectBranchCreate");
         }
 
         [Test]
         public async Task ShouldDetectChangesToRemotes()
         {
+            Logger.Trace("Starting ShouldDetectChangesToRemotes");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -376,11 +406,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.Received().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectChangesToRemotes");
         }
 
         [Test]
         public async Task ShouldDetectChangesToRemotesWhenSwitchingBranches()
         {
+            Logger.Trace("Starting ShouldDetectChangesToRemotesWhenSwitchingBranches");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterTwoRemotes, initializeRepository: false,
@@ -432,11 +466,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.DidNotReceive().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectChangesToRemotesWhenSwitchingBranches");
         }
 
         [Test]
         public async Task ShouldDetectGitPull()
         {
+            Logger.Trace("Starting ShouldDetectGitPull");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanSynchronized, initializeRepository: false,
@@ -465,11 +503,15 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.DidNotReceive().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectGitPull");
         }
 
         [Test]
         public async Task ShouldDetectGitFetch()
         {
+            Logger.Trace("Starting ShouldDetectGitFetch");
+
             var repositoryManagerListener = Substitute.For<IRepositoryManagerListener>();
 
             await Initialize(TestRepoMasterCleanUnsynchronized, initializeRepository: false,
@@ -499,6 +541,8 @@ namespace IntegrationTests
             repositoryManagerListener.DidNotReceive().GitLogUpdated(Args.GitLogs);
             repositoryManagerListener.Received().LocalBranchesUpdated(Args.LocalBranchDictionary);
             repositoryManagerListener.Received().RemoteBranchesUpdated(Args.RemoteDictionary, Args.RemoteBranchDictionary);
+
+            Logger.Trace("Ending ShouldDetectGitFetch");
         }
     }
 }
