@@ -74,14 +74,16 @@ namespace IntegrationTests
             return Environment;
         }
 
-        private void BleedEvents(NPath testRepoMasterCleanUnsynchronized)
+        private void BleedEvents(NPath path)
         {
-            using (var repositoryWatcher = new RepositoryWatcher(Platform, new RepositoryPathConfiguration(testRepoMasterCleanUnsynchronized), CancellationToken.None))
+            using (var repositoryWatcher = new RepositoryWatcher(Platform, new RepositoryPathConfiguration(path), CancellationToken.None))
             {
                 repositoryWatcher.Initialize();
                 repositoryWatcher.Start();
                 while (repositoryWatcher.CheckAndProcessEvents() != 0)
-                { }
+                {
+                    Thread.Sleep(TimeSpan.FromMilliseconds(200));
+                }
                 repositoryWatcher.Stop();
             }
         }
